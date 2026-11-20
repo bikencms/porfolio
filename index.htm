@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Art Toy & Plush Showcase Grid</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Noto Sans SC for brand badge authenticity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+SC:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for crisp UI & social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        badge: ['"Noto Sans SC"', 'Inter', 'sans-serif'],
+                    },
+                    screens: {
+                        'xs': '480px',
+                        'md': '768px',
+                        'xl': '1200px',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-neutral-900 m-0 p-0 overflow-x-hidden antialiased selection:bg-rose-500 selection:text-white">
+
+    <!-- Main Full-Screen Edge-to-Edge Gallery Grid -->
+    <!-- 2 cols on mobile, 2 cols on xs (480px+), 3 cols on md (768px+), 4 cols on xl (1200px+) -->
+    <main id="gallery-grid" class="w-full min-h-screen grid grid-cols-2 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[3px] sm:gap-[4px] bg-white">
+        <!-- Cards will be dynamically injected via JS for clean modularity, fallback error handling, and interactive lightbox binding -->
+    </main>
+
+    <!-- Full-Screen Lightbox Preview Modal -->
+    <div id="lightbox-modal" 
+         class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-md p-3 sm:p-6 transition-opacity duration-300 opacity-0"
+         role="dialog" 
+         aria-modal="true" 
+         aria-label="Collectible Toy Preview">
+        
+        <!-- Close Button -->
+        <button id="lightbox-close" 
+                class="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Close Preview">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+
+        <!-- Previous Button -->
+        <button id="lightbox-prev" 
+                class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Previous Item">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+        </button>
+
+        <!-- Next Button -->
+        <button id="lightbox-next" 
+                class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Next Item">
+            <i class="fa-solid fa-chevron-right text-lg"></i>
+        </button>
+
+        <!-- Modal Content Container -->
+        <div id="lightbox-card" class="relative max-w-4xl w-full max-h-[90vh] bg-neutral-900 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-white/10 transform scale-95 transition-transform duration-300">
+            <!-- Image Container -->
+            <div class="relative w-full md:w-3/5 bg-neutral-950 flex items-center justify-center overflow-hidden aspect-[4/5] max-h-[65vh] md:max-h-[85vh]">
+                <img id="lightbox-img" src="" alt="" class="w-full h-full object-cover select-none">
+                <!-- Top-Left Badge inside Lightbox -->
+                <div id="lightbox-badge" class="absolute top-3 left-3 bg-[#E61E2B] text-white font-badge font-bold text-xs px-2 py-0.5 rounded-[3px] shadow-md tracking-tight">
+                    大漂亮 | 潮玩
+                </div>
+            </div>
+
+            <!-- Details Panel -->
+            <div class="w-full md:w-2/5 p-5 sm:p-6 flex flex-col justify-between bg-neutral-900 text-white">
+                <div>
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-400 p-[2px]">
+                                <div class="w-full h-full rounded-full bg-neutral-900 flex items-center justify-center text-xs font-extrabold text-white">
+                                    潮玩
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold leading-tight">Dapiaoliang Studio</p>
+                                <p class="text-xs text-neutral-400">Designer Vinyl & Plush</p>
+                            </div>
+                        </div>
+                        <span id="lightbox-type-pill" class="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/10 text-neutral-200">
+                            Limited Edition
+                        </span>
+                    </div>
+
+                    <h2 id="lightbox-title" class="text-lg sm:text-xl font-bold text-white mb-2"></h2>
+                    <p id="lightbox-desc" class="text-sm text-neutral-300 leading-relaxed mb-4"></p>
+                    
+                    <div id="lightbox-tags" class="flex flex-wrap gap-1.5 mb-6"></div>
+                </div>
+
+                <!-- Engagement Footer -->
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-5">
+                        <button id="lightbox-like-btn" class="flex items-center gap-2 text-white hover:text-rose-500 transition-colors cursor-pointer group p-1">
+                            <i id="lightbox-heart-icon" class="fa-solid fa-heart text-xl transition-transform group-active:scale-125"></i>
+                            <span id="lightbox-likes" class="font-bold text-base">130</span>
+                        </button>
+                        <div class="flex items-center gap-2 text-neutral-300">
+                            <i class="fa-solid fa-comment text-xl"></i>
+                            <span id="lightbox-comments" class="font-bold text-base">3</span>
+                        </div>
+                    </div>
+                    <span class="text-xs text-neutral-400 font-medium">Click outside or ESC to close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Curated Designer Plush & Collectible Toy Showcase Data
+         * Each item combines vibrant studio photography with bespoke custom SVG art overlays/fallbacks
+         * to capture the authentic aesthetic of designer vinyl plush dolls (e.g., Baby Three, Timmy, Rebaby).
+         */
+        const showcaseItems = [
+            {
+                id: 1,
+                title: "TIMMY Gothic Marionette Plush Series",
+                series: "TIMMY Art Toy",
+                badge: "大漂亮 | 潮玩",
+                iconType: "pin", // Top-right pinned icon like the reference image
+                likes: 482,
+                comments: 29,
+                liked: false,
+                defaultHovered: false,
+                palette: { bg1: "#3b234a", bg2: "#160d1f", accent: "#e8b4f8", fur: "#1a1621" },
+                // High-aesthetic pastel/gothic plush studio visual + custom SVG art generator
+                imageUrl: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "marionette",
+                description: "Limited edition Gothic Marionette plush doll featuring custom glass eyes, velvet bunny ears, and lace-trimmed Victorian dress.",
+                tags: ["#DesignerToy", "#ArtPlush", "#TimmySeries", "#BlindBox"]
+            },
+            {
+                id: 2,
+                title: "Rebaby-Arrival: Little Miss Puzzle",
+                series: "Rebaby Series",
+                badge: "大漂亮 | 潮玩",
+                iconType: "carousel",
+                likes: 319,
+                comments: 18,
+                liked: false,
+                defaultHovered: false,
+                palette: { bg1: "#6b7fd7", bg2: "#3b4999", accent: "#ffb7d5", fur: "#a9c1f7" },
+                imageUrl: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "puzzle",
+                description: "Pastel periwinkle bunny-hooded vinyl face plush with braided yarn pigtails and embroidered star-pupil eyes.",
+                tags: ["#Rebaby", "#KawaiiPlush", "#VinylFace", "#Collectible"]
+            },
+            {
+                id: 3,
+                title: "Sakura Coastline Bunny Backpack Plush",
+                series: "Spring Pastel Drop",
+                badge: "大漂亮 | 潮玩",
+                iconType: "carousel",
+                likes: 645,
+                comments: 42,
+                liked: false,
+                defaultHovered: false,
+                palette: { bg1: "#ffd6e7", bg2: "#a8d8ff", accent: "#ff7eb3", fur: "#ffffff" },
+                imageUrl: "https://images.unsplash.com/photo-1558679908-541bcf1249ff?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "sakura",
+                description: "Oversized lop-eared white plush carrier featuring floral embroidery on inner ears and ruffled baby-blue pinafore.",
+                tags: ["#PlushBag", "#PastelAesthetic", "#ArtToy", "#SpringDrop"]
+            },
+            {
+                id: 4,
+                title: "Imperial Hanbok Twins Collector Set",
+                series: "Heritage Couture",
+                badge: "大漂亮 | 潮玩",
+                iconType: "carousel",
+                likes: 890,
+                comments: 54,
+                liked: false,
+                defaultHovered: false,
+                palette: { bg1: "#fce4ec", bg2: "#f3d1dc", accent: "#d4af37", fur: "#fff5f7" },
+                imageUrl: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "hanbok",
+                description: "Twin couture edition in silk blush pink and obsidian velvet traditional robes with pearl hairpins and folding fan.",
+                tags: ["#CouturePlush", "#TwinSet", "#ArtDoll", "#LimitedRelease"]
+            },
+            {
+                id: 5,
+                title: "Baby Three: Midnight Lunar Tiger",
+                series: "Baby Three Blind Box",
+                badge: "大漂亮 | 潮玩",
+                iconType: "carousel",
+                likes: 130,
+                comments: 3,
+                liked: false,
+                defaultHovered: true, // Matches the signature dark overlay preview from reference
+                palette: { bg1: "#1f1d2b", bg2: "#0d0c12", accent: "#f472b6", fur: "#d1d5db" },
+                imageUrl: "https://images.unsplash.com/photo-1563396983906-b3795482a59a?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "lunar",
+                description: "Secret chase edition snow-tiger plush with neon pom-pom ears, lunar crater display stand, and holographic accessories.",
+                tags: ["#BabyThree", "#SecretEdition", "#VinylPlush", "#ToyPhotography"]
+            },
+            {
+                id: 6,
+                title: "Candy Cane Reindeer Holiday Plush",
+                series: "Winter Wonderland",
+                badge: "大漂亮 | 潮玩",
+                iconType: "carousel",
+                likes: 412,
+                comments: 21,
+                liked: false,
+                defaultHovered: false,
+                palette: { bg1: "#5c2b29", bg2: "#2b1210", accent: "#ef4444", fur: "#a67c52" },
+                imageUrl: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "holiday",
+                description: "Cozy caramel-fur holiday edition topped with fluffy white snow trim, candy-cane antlers, and embroidered snowflake paws.",
+                tags: ["#HolidayToy", "#WinterPlush", "#DesignerCollectible"]
+            },
+            {
+                id: 7,
+                title: "Crimson Velvet Bear Maid Edition",
+                series: "Dark Fairytale",
+                badge: "大漂亮 | 潮玩",
+                iconType: "carousel",
+                likes: 528,
+                comments: 37,
+                liked: false,
+                defaultHovered: false,
+                palette: { bg1: "#590d22", bg2: "#2b0510", accent: "#ff8fa3", fur: "#4a0e1c" },
+                imageUrl: "https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "crimson",
+                description: "Burgundy plush bear hood with stitched button eye detail, rose-pink hair, and monochrome ruffled apron dress.",
+                tags: ["#DarkFairytale", "#PlushBear", "#ArtToyStudio"]
+            },
+            {
+                id: 8,
+                title: "Starlight & Heart Dreamy Pajama Duo",
+                series: "Sweet Dreams Series",
+                badge: "大漂亮 | 潮玩",
+                iconType: "carousel",
+                likes: 764,
+                comments: 49,
+                liked: false,
+                defaultHovered: false,
+                palette: { bg1: "#c4b5fd", bg2: "#8b5cf6", accent: "#fb7185", fur: "#fbcfe8" },
+                imageUrl: "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?auto=format&fit=crop&w=900&q=85",
+                svgTheme: "dreamy",
+                description: "Pastel lavender & blush jester-hat plushies holding plush yellow star and crimson heart pillows.",
+                tags: ["#SweetDreams", "#PlushDuo", "#KawaiiToys", "#SoftVinyl"]
+            }
+        ];
+
+        /**
+         * Generates bespoke high-resolution SVG Designer Art Toy illustrations as crisp data-URI fallbacks
+         * or artistic enhancements so every card looks like an authentic designer collectible showcase.
+         */
+        function createDesignerToySVG(item) {
+            const { bg1, bg2, accent, fur } = item.palette;
+            const svg = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+                <defs>
+                    <linearGradient id="bg-${item.id}" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="${bg1}"/>
+                        <stop offset="100%" stop-color="${bg2}"/>
+                    </linearGradient>
+                    <radialGradient id="glow-${item.id}" cx="50%" cy="45%" r="50%">
+                        <stop offset="0%" stop-color="${accent}" stop-opacity="0.45"/>
+                        <stop offset="100%" stop-color="${bg2}" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <rect width="800" height="1000" fill="url(#bg-${item.id})"/>
+                <circle cx="400" cy="450" r="360" fill="url(#glow-${item.id})"/>
+                
+                <!-- Decorative Sparkles & Frame -->
+                <circle cx="140" cy="220" r="6" fill="#ffffff" opacity="0.6"/>
+                <circle cx="670" cy="190" r="8" fill="${accent}" opacity="0.8"/>
+                <circle cx="650" cy="760" r="5" fill="#ffffff" opacity="0.5"/>
+                <circle cx="160" cy="790" r="9" fill="${accent}" opacity="0.6"/>
+
+                <!-- Plush Bunny/Bear Ears -->
+                <ellipse cx="275" cy="290" rx="68" ry="165" transform="rotate(-18 275 290)" fill="${fur}" stroke="${accent}" stroke-width="6"/>
+                <ellipse cx="275" cy="295" rx="34" ry="115" transform="rotate(-18 275 295)" fill="${accent}" opacity="0.55"/>
+                <ellipse cx="525" cy="290" rx="68" ry="165" transform="rotate(18 525 290)" fill="${fur}" stroke="${accent}" stroke-width="6"/>
+                <ellipse cx="525" cy="295" rx="34" ry="115" transform="rotate(18 525 295)" fill="${accent}" opacity="0.55"/>
+
+                <!-- Plush Body & Outfit -->
+                <ellipse cx="400" cy="735" rx="165" ry="185" fill="${fur}" stroke="${accent}" stroke-width="5"/>
+                <path d="M265 690 Q400 770 535 690 L565 860 Q400 910 235 860 Z" fill="${accent}" opacity="0.85"/>
+                <circle cx="400" cy="730" r="22" fill="#ffffff" opacity="0.9"/>
+
+                <!-- Fluffy Hood -->
+                <circle cx="400" cy="465" r="195" fill="${fur}" stroke="${accent}" stroke-width="8"/>
+                
+                <!-- Vinyl Doll Face -->
+                <ellipse cx="400" cy="480" rx="138" ry="118" fill="#ffe8df"/>
+                
+                <!-- Rosy Cheeks -->
+                <ellipse cx="318" cy="512" rx="24" ry="13" fill="#ff758f" opacity="0.55"/>
+                <ellipse cx="482" cy="512" rx="24" ry="13" fill="#ff758f" opacity="0.55"/>
+
+                <!-- Expressive Glass Eyes -->
+                <circle cx="342" cy="472" r="32" fill="#1e1b2e"/>
+                <circle cx="333" cy="462" r="11" fill="#ffffff"/>
+                <circle cx="352" cy="482" r="5" fill="${accent}"/>
+
+                <circle cx="458" cy="472" r="32" fill="#1e1b2e"/>
+                <circle cx="449" cy="462" r="11" fill="#ffffff"/>
+                <circle cx="468" cy="482" r="5" fill="${accent}"/>
+
+                <!-- Cute Nose & Pouty Mouth -->
+                <circle cx="400" cy="498" r="7" fill="#ff8fa3"/>
+                <path d="M385 522 Q400 534 415 522" fill="none" stroke="#9d4edd" stroke-width="5" stroke-linecap="round"/>
+
+                <!-- Series Title Watermark -->
+                <text x="400" y="950" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#ffffff" opacity="0.75" text-anchor="middle" letter-spacing="3">
+                    ${item.series.toUpperCase()}
+                </text>
+            </svg>`;
+            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+        }
+
+        const galleryGrid = document.getElementById('gallery-grid');
+        let currentLightboxIndex = 0;
+
+        /**
+         * Renders the full-screen responsive card grid
+         */
+        function renderGallery() {
+            galleryGrid.innerHTML = '';
+
+            showcaseItems.forEach((item, index) => {
+                const fallbackSvg = createDesignerToySVG(item);
+
+                // Card Wrapper: Strict 4:5 vertical portrait ratio, crisp edge-to-edge feel
+                const card = document.createElement('article');
+                card.className = `group relative w-full aspect-[4/5] overflow-hidden bg-neutral-100 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-rose-500`;
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', `${item.title} - ${item.likes} likes, ${item.comments} comments`);
+
+                // Top-Right Icon SVG (Pinned icon for item 1, Carousel stack icon for others)
+                const topRightIcon = item.iconType === 'pin'
+                    ? `<svg class="w-4 h-4 sm:w-[18px] sm:h-[18px] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" viewBox="0 0 24 24" fill="currentColor">
+                         <path d="M16 3a1 1 0 0 1 .707.293l4 4a1 1 0 0 1-.26 1.622l-3.63 1.452-2.11 2.11.495 3.465a1 1 0 0 1-1.697.848L10.38 13.66l-5.673 5.673a1 1 0 0 1-1.414-1.414l5.673-5.673-3.13-3.125a1 1 0 0 1 .848-1.697l3.465.495 2.11-2.11 1.452-3.63A1 1 0 0 1 16 3z"/>
+                       </svg>`
+                    : `<svg class="w-4 h-4 sm:w-[18px] sm:h-[18px] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]" viewBox="0 0 24 24" fill="currentColor">
+                         <path d="M4 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6zm16 2a1 1 0 0 1 1 1v9a3 3 0 0 1-3 3H9a1 1 0 0 1 0-2h9a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1z"/>
+                       </svg>`;
+
+                // Card #5 features a subtle persistent dark showcase tint until hovered, matching the reference visual
+                const overlayVisibilityClasses = item.defaultHovered
+                    ? 'opacity-100 bg-black/[0.38] group-hover:bg-black/[0.42]'
+                    : 'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 bg-black/[0.38]';
+
+                card.innerHTML = `
+                    <!-- Primary Collectible Image (Static scale on hover, Instagram-style) -->
+                    <img src="${item.imageUrl}" 
+                         alt="${item.title}"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='${fallbackSvg}';"
+                         class="w-full h-full object-cover object-center" />
+
+                    <!-- Subtle Top Gradient for High Badge Legibility -->
+                    <div class="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/30 to-transparent"></div>
+
+                    <!-- Top-Left Signature Red Brand Badge ("大漂亮 | 潮玩") -->
+                    <div class="pointer-events-none absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-10 flex items-center">
+                        <span class="bg-[#E61E2B] text-white font-badge font-bold text-[10px] sm:text-[11px] leading-none px-1.5 py-[3px] sm:px-2 sm:py-1 rounded-[2px] shadow-sm tracking-tight">
+                            ${item.badge}
+                        </span>
+                    </div>
+
+                    <!-- Top-Right Instagram Carousel / Pin Indicator -->
+                    <div class="pointer-events-none absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10">
+                        ${topRightIcon}
+                    </div>
+
+                    <!-- Instagram-Style Dark Hover Overlay with Centered Like & Comment Metrics -->
+                    <div class="absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-150 ${overlayVisibilityClasses}">
+                        <div class="flex items-center gap-7 text-white font-bold text-[15px] sm:text-base tracking-wide">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-heart text-white text-base sm:text-lg"></i>
+                                <span data-like-count="${item.id}">${item.likes}</span>
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-comment text-white text-base sm:text-lg"></i>
+                                <span>${item.comments}</span>
+                            </span>
+                        </div>
+                    </div>
+                `;
+
+                // Click & Keyboard triggers for Lightbox Modal
+                card.addEventListener('click', () => openLightbox(index));
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox(index);
+                    }
+                });
+
+                galleryGrid.appendChild(card);
+            });
+        }
+
+        // Lightbox Controls & State Management
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxCard = document.getElementById('lightbox-card');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxBadge = document.getElementById('lightbox-badge');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+        const lightboxTags = document.getElementById('lightbox-tags');
+        const lightboxLikes = document.getElementById('lightbox-likes');
+        const lightboxComments = document.getElementById('lightbox-comments');
+        const lightboxTypePill = document.getElementById('lightbox-type-pill');
+        const lightboxLikeBtn = document.getElementById('lightbox-like-btn');
+        const lightboxHeartIcon = document.getElementById('lightbox-heart-icon');
+
+        function updateLightboxContent(index) {
+            currentLightboxIndex = (index + showcaseItems.length) % showcaseItems.length;
+            const item = showcaseItems[currentLightboxIndex];
+            const fallbackSvg = createDesignerToySVG(item);
+
+            lightboxImg.onerror = function() {
+                this.onerror = null;
+                this.src = fallbackSvg;
+            };
+            lightboxImg.src = item.imageUrl;
+            lightboxImg.alt = item.title;
+
+            lightboxBadge.textContent = item.badge;
+            lightboxTitle.textContent = item.title;
+            lightboxDesc.textContent = item.description;
+            lightboxLikes.textContent = item.likes;
+            lightboxComments.textContent = item.comments;
+            lightboxTypePill.textContent = item.series;
+
+            // Update heart button state
+            if (item.liked) {
+                lightboxHeartIcon.classList.add('text-rose-500');
+                lightboxHeartIcon.classList.remove('text-white');
+            } else {
+                lightboxHeartIcon.classList.remove('text-rose-500');
+                lightboxHeartIcon.classList.add('text-white');
+            }
+
+            // Render hashtags
+            lightboxTags.innerHTML = item.tags
+                .map(tag => `<span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-rose-300 border border-white/10">${tag}</span>`)
+                .join('');
+        }
+
+        function openLightbox(index) {
+            updateLightboxContent(index);
+            lightboxModal.classList.remove('hidden');
+            lightboxModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            // Trigger smooth fade & scale-in animation
+            requestAnimationFrame(() => {
+                lightboxModal.classList.remove('opacity-0');
+                lightboxModal.classList.add('opacity-100');
+                lightboxCard.classList.remove('scale-95');
+                lightboxCard.classList.add('scale-100');
+            });
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.remove('opacity-100');
+            lightboxModal.classList.add('opacity-0');
+            lightboxCard.classList.remove('scale-100');
+            lightboxCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                lightboxModal.classList.add('hidden');
+                lightboxModal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }, 250);
+        }
+
+        // Interactive Like Toggle inside Lightbox
+        lightboxLikeBtn.addEventListener('click', () => {
+            const item = showcaseItems[currentLightboxIndex];
+            item.liked = !item.liked;
+            item.likes += item.liked ? 1 : -1;
+
+            // Sync UI in modal and grid card
+            updateLightboxContent(currentLightboxIndex);
+            const gridLikeSpan = document.querySelector(`[data-like-count="${item.id}"]`);
+            if (gridLikeSpan) {
+                gridLikeSpan.textContent = item.likes;
+            }
+        });
+
+        // Navigation & Modal Event Listeners
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-prev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateLightboxContent(currentLightboxIndex - 1);
+        });
+        document.getElementById('lightbox-next').addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateLightboxContent(currentLightboxIndex + 1);
+        });
+
+        // Close on backdrop click
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation (Escape, Left/Right Arrows)
+        document.addEventListener('keydown', (e) => {
+            if (lightboxModal.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') updateLightboxContent(currentLightboxIndex - 1);
+            if (e.key === 'ArrowRight') updateLightboxContent(currentLightboxIndex + 1);
+        });
+
+        // Touch Swipe Support for Mobile Lightbox Navigation
+        let touchStartX = 0;
+        lightboxModal.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightboxModal.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const deltaX = touchEndX - touchStartX;
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    updateLightboxContent(currentLightboxIndex - 1);
+                } else {
+                    updateLightboxContent(currentLightboxIndex + 1);
+                }
+            }
+        }, { passive: true });
+
+        // Initialize Gallery on Window Load
+        window.addEventListener('DOMContentLoaded', renderGallery);
+    </script>
+</body>
+</html>
