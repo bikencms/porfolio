@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio và CV của Phạm Công Minh, Senior Developer và Solution Architect tại TP. Hồ Chí Minh.">
+  <meta name="theme-color" content="#12201a">
+  <title>Phạm Công Minh — Senior Developer &amp; Solution Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14231b;
+      --muted: #506057;
+      --paper: #f6f8f3;
+      --line: #dce4d9;
+      --dark: #12201a;
+      --accent: #d1fa88;
+      --mono: "IBM Plex Mono", monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 1rem/1.65 "Be Vietnam Pro", system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: .25em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid #477917; outline-offset: 4px; }
+    [hidden] { display: none !important; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { line-height: 1.18; }
+    .wrap { width: min(100% - 3rem, 74rem); margin-inline: auto; }
+    .skip { position: absolute; z-index: 3; top: .5rem; left: .5rem; padding: .6rem 1rem; background: white; transform: translateY(-160%); }
+    .skip:focus { transform: none; }
+    .site-header, .hero, .footer { color: #f6faef; background: var(--dark); }
+    .site-header { border-bottom: 1px solid #304138; }
+    .nav-row, nav, .actions { display: flex; align-items: center; gap: .75rem 1.65rem; flex-wrap: wrap; }
+    .nav-row { justify-content: space-between; min-height: 4.75rem; padding-block: .7rem; }
+    .brand { font: 600 1.2rem var(--mono); text-decoration: none; letter-spacing: -.06em; }
+    .brand span, .eyebrow, .hero h1 em { color: var(--accent); }
+    nav a { font-size: .9rem; font-weight: 500; text-decoration: none; }
+    nav a:hover { color: var(--accent); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 3rem; align-items: center; padding-block: clamp(4rem, 8vw, 7.5rem); }
+    .eyebrow, .section-kicker { font: 500 .85rem/1.5 var(--mono); letter-spacing: .055em; text-transform: uppercase; }
+    h1 { margin: 1rem 0 1.5rem; font-size: clamp(2.8rem, 6.4vw, 5.4rem); letter-spacing: -.065em; font-weight: 800; }
+    .hero h1 em { font-style: normal; }
+    .intro { max-width: 37rem; color: #c8d6cc; font-size: clamp(1rem, 2vw, 1.15rem); }
+    .actions { margin-top: 1.75rem; gap: .75rem; }
+    .button { display: inline-flex; align-items: center; min-height: 2.9rem; padding: .55rem 1rem; border: 1px solid #788b7d; border-radius: .5rem; font-size: .9rem; font-weight: 700; text-decoration: none; }
+    .button:hover { border-color: var(--accent); color: var(--accent); }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: var(--dark); }
+    .button.primary:hover { background: #e2ffaf; }
+    .system { position: relative; overflow: hidden; display: grid; align-content: center; min-height: 22rem; padding: 1.65rem; border: 1px solid #42554a; border-radius: 1.25rem; background: radial-gradient(ellipse at 100% 0%, #334d38, transparent 70%), repeating-linear-gradient(0deg, #34473c55 0 1px, transparent 1px 22px), repeating-linear-gradient(90deg, #34473c55 0 1px, transparent 1px 22px), #17271e; }
+    .system::before { content: ""; position: absolute; width: 19rem; height: 19rem; top: -8rem; right: -7rem; border: 1px solid #cffa8877; border-radius: 50%; box-shadow: 0 0 0 1.5rem #cffa8821, 0 0 0 3rem #cffa8815; }
+    .system > * { position: relative; }
+    .system dl { margin: 1.5rem 0 0; }
+    .system dl div { display: grid; grid-template-columns: 6.5rem 1fr; gap: .75rem; padding: .8rem 0; border-top: 1px solid #526458; align-items: baseline; }
+    .system dt { color: #b8cbbd; font: .82rem var(--mono); }
+    .system dd { margin: 0; font-weight: 600; font-size: .95rem; }
+    .section { padding-block: clamp(3.75rem, 7vw, 6.25rem); }
+    .section-kicker { color: #375f25; }
+    h2 { margin: .4rem 0 .8rem; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.055em; }
+    .section-intro, .project-desc { color: var(--muted); }
+    .filters { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1.65rem 0 1.45rem; }
+    .filters button { min-height: 2.75rem; font-family: inherit; font-size: .875rem; font-weight: 600; padding: .5rem .95rem; background: #fff; color: var(--ink); border: 1px solid #c9d5c6; border-radius: 99rem; cursor: pointer; }
+    .filters button:hover { border-color: #477917; }
+    .filters button[aria-pressed="true"] { background: var(--dark); border-color: var(--dark); color: white; }
+    .projects-grid, .stack-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .project-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: #fff; }
+    .project-cover { position: relative; display: flex; align-items: end; isolation: isolate; overflow: hidden; min-height: clamp(6rem, 14vw, 10.5rem); padding: 1.25rem; color: var(--cover-text, #e7f8cd); background: var(--cover-bg, #284339); }
+    .project-cover::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .17; background-image: radial-gradient(currentColor 1px, transparent 1px); background-size: 12px 12px; mask-image: linear-gradient(100deg, transparent, black); }
+    .project-cover span { font: 600 clamp(1.1rem, 3vw, 2rem) var(--mono); letter-spacing: -.055em; }
+    .project-cover i { position: absolute; z-index: -1; top: 8%; right: 14%; width: 9em; aspect-ratio: 1; opacity: .62; border: 1px solid currentColor; border-radius: 26%; transform: rotate(35deg); box-shadow: 0 0 0 .85rem #ffffff19, 0 0 0 1.7rem #ffffff10, 0 0 0 2.55rem #ffffff0a; }
+    .cover-2 { --cover-bg: #272644; --cover-text: #ded5ff; }
+    .cover-3 { --cover-bg: #174b4d; --cover-text: #c0f3ee; }
+    .cover-4 { --cover-bg: #482837; --cover-text: #ffd3e4; }
+    .cover-5 { --cover-bg: #513a22; --cover-text: #ffe0a9; }
+    .cover-6 { --cover-bg: #253c57; --cover-text: #c8e4ff; }
+    .cover-7 { --cover-bg: #314822; --cover-text: #e0f5b6; }
+    .cover-8 { --cover-bg: #224957; --cover-text: #d1f4ed; }
+    .project-body { display: flex; flex-direction: column; align-items: start; gap: .75rem; flex: 1; width: 100%; padding: 1.25rem; }
+    .card-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; width: 100%; }
+    .category-tag, .domain-link, .domain-badge { font-size: .85rem; overflow-wrap: anywhere; }
+    .category-tag { color: var(--muted); }
+    .domain-link { color: #345d22; font-weight: 600; }
+    .domain-badge { color: var(--muted); }
+    .project-body h3 { font-size: clamp(1.3rem, 2.5vw, 1.65rem); letter-spacing: -.035em; }
+    details { width: 100%; margin-top: auto; border-top: 1px solid var(--line); padding-top: .7rem; }
+    summary { width: fit-content; padding-block: .2rem; cursor: pointer; font-size: .9rem; font-weight: 600; }
+    .meta-table { margin-block: .5rem; display: grid; gap: .35rem; }
+    .meta-row { display: grid; grid-template-columns: minmax(6rem, .85fr) 1.5fr; gap: .6rem; font-size: .875rem; }
+    .meta-label { color: var(--muted); }
+    .tech-pills { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tech-pills span { border-radius: .3rem; background: #eef3ea; color: #2b4428; padding: .2rem .45rem; font: .8rem/1.45 var(--mono); }
+    .stack-section { background: #eaf0e7; border-top: 1px solid var(--line); }
+    .stack-grid { margin-top: 1.5rem; }
+    .stack-box { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.35rem; }
+    .stack-box h3 { font-size: 1.15rem; }
+    .stack-box ul { margin: .65rem 0 0; padding-left: 1.15rem; color: var(--muted); }
+    .stack-box li + li { margin-top: .25rem; }
+    .experience { border-top: 1px solid var(--line); }
+    .experience .section-intro { max-width: 47rem; }
+    .experience-list { list-style: none; padding: 0; margin: 1.75rem 0 0; border-top: 1px solid var(--line); }
+    .experience-list li { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: .35rem 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+    .experience-period { color: #375f25; font: 500 .9rem/1.6 var(--mono); }
+    .experience-list h3 { font-size: 1.12rem; }
+    .experience-list p { margin-top: .35rem; color: var(--muted); }
+    .education { margin-top: 1.5rem; color: var(--muted); }
+    .footer .wrap { padding-block: clamp(3rem, 7vw, 5.5rem); }
+    .footer p:not(.eyebrow) { color: #c8d6cc; }
+    .footer :focus-visible, .site-header :focus-visible, .hero :focus-visible { outline-color: var(--accent); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    @media (max-width: 52rem) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .system { min-height: 0; }
+    }
+    @media (max-width: 43rem) {
+      .wrap { width: calc(100% - 2rem); }
+      .projects-grid, .stack-grid { grid-template-columns: 1fr; }
+      .nav-row, nav { gap: .5rem 1rem; }
+      .experience-list li { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Đến nội dung chính</a>
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <a class="brand" href="#top" aria-label="minhbiken.dev, đầu trang">minhbiken<span>.dev</span></a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#projects">Dự án</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a href="#stack">Công nghệ</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="intro-title">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Senior Developer · Solution Architect</p>
+          <h1 id="intro-title">Phạm Công Minh</h1>
+          <p class="intro">Mình là minhbiken, lập trình viên tại TP. Hồ Chí Minh. Mình thiết kế kiến trúc, dẫn dắt đội phát triển và xây dựng các hệ thống web với PHP, Node.js và AWS.</p>
+          <div class="actions">
+            <a class="button primary" href="#projects">Xem dự án</a>
+          </div>
+        </div>
+        <aside class="system" aria-label="Công nghệ chính">
+          <p class="eyebrow">Công nghệ chính</p>
+          <dl>
+            <div><dt>Frontend</dt><dd>Nuxt 3 · Vue.js · Blade</dd></div>
+            <div><dt>Backend</dt><dd>Laravel · Node.js</dd></div>
+            <div><dt>Dữ liệu</dt><dd>MySQL · TiDB · Redis</dd></div>
+            <div><dt>Cloud</dt><dd>AWS · Cloudflare · Vercel · Render</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+    <section class="wrap section" id="projects" aria-labelledby="projects-title">
+      <p class="section-kicker">Portfolio</p>
+      <h2 id="projects-title">Dự án nổi bật</h2>
+      <p class="section-intro">Khám phá sản phẩm, tính năng và kiến trúc của từng dự án, cùng các website WordPress cho lĩnh vực lưu trú.</p>
+      <div class="filters" role="group" aria-label="Lọc dự án" hidden>
+        <button type="button" data-filter="all" aria-pressed="true">Tất cả</button>
+        <button type="button" data-filter="ecommerce" aria-pressed="false">Thương mại &amp; dịch vụ</button>
+        <button type="button" data-filter="platform" aria-pressed="false">Nền tảng web</button>
+        <button type="button" data-filter="tool" aria-pressed="false">Tự động hóa</button>
+      </div>
+      <p class="sr-only" role="status" id="filter-status"></p>
+      <div class="projects-grid">
+        <article class="project-card" data-category="platform">
+          <div class="project-cover cover-8" aria-hidden="true"><span>GUESTWISELY</span><i></i></div>
+          <div class="project-body">
+            <div class="card-top">
+              <span class="category-tag">WordPress · Vacation rental</span>
+              <span class="domain-badge">Website &amp; demo</span>
+            </div>
+            <h3>GuestWisely — Website lưu trú</h3>
+            <p class="project-desc">Website WordPress cho lĩnh vực cho thuê lưu trú, giới thiệu chỗ ở và điểm đến trên các domain riêng.</p>
+            <div class="tech-pills"><span>WordPress</span><span>Hospitality</span><span>Domain</span></div>
+            <details>
+              <summary>Xem website</summary>
+              <ul>
+                <li><a href="https://caribbeanparadisehomes.com/" target="_blank" rel="noopener noreferrer">Caribbean Paradise Homes</a></li>
+                <li><a href="https://demo.aurora.guestwisely.io/" target="_blank" rel="noopener noreferrer">Aurora</a></li>
+                <li><a href="https://demo.laguna.guestwisely.io/" target="_blank" rel="noopener noreferrer">Laguna</a></li>
+                <li><a href="https://almarinavillas.com/" target="_blank" rel="noopener noreferrer">Almarina Villas</a></li>
+              </ul>
+            </details>
+          </div>
+        </article>
+<article class="project-card" data-category="ecommerce">
+<div class="project-cover cover-1" aria-hidden="true"><span>COMMERCE</span><i></i></div>
+<div class="project-body">
+            <div class="card-top">
+              <span class="category-tag">E-Commerce &amp; Retail</span>
+              <a href="https://ibear.vn" target="_blank" rel="noopener" class="domain-link">
+                ibear.vn ↗
+              </a>
+            </div>
+            <h3>iBear Vietnam</h3>
+            <p class="project-desc">
+              Website thương mại điện tử và giới thiệu thương hiệu máy gắp thú Pick Crush, trà sữa và mô hình Blind-box. Giao diện tối ưu trải nghiệm mobile theo phong cách Instagram Shop.
+            </p>
+            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+              <div class="meta-row">
+                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-val">PHP, Laravel, Blade, HTML/CSS/JS</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Database:</span>
+                <span class="meta-val">MySQL</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Platform / Infra:</span>
+                <span class="meta-val">Cloudflare DNS &amp; R2 Storage</span>
+              </div>
+            </div></details><div class="tech-pills">
+              <span>Laravel</span>
+              <span>MySQL</span>
+              <span>Cloudflare R2</span>
+              <span>E-Commerce</span>
+            </div>
+          </div></article>
+<article class="project-card" data-category="platform">
+<div class="project-cover cover-2" aria-hidden="true"><span>STREAMING</span><i></i></div>
+<div class="project-body">
+            <div class="card-top">
+              <span class="category-tag">Media Streaming</span>
+              <a href="https://axn.ibear.vn/" target="_blank" rel="noopener noreferrer" class="domain-link">
+                axn.ibear.vn ↗
+              </a>
+            </div>
+            <h3>MovieAXN / KokoaTV</h3>
+            <p class="project-desc">
+              Nền tảng xem phim trực tuyến kiến trúc tách rời Frontend/Backend (Headless), tích hợp caching tốc độ cao và lưu trữ media phân tán.
+            </p>
+            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+              <div class="meta-row">
+                <span class="meta-label">Frontend:</span>
+                <span class="meta-val">Nuxt 3 (Vue.js), Node.js</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Backend &amp; DB:</span>
+                <span class="meta-val">Laravel API, TiDB Serverless MySQL, Redis</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Platform / Infra:</span>
+                <span class="meta-val">Vercel, Render.com, Cloudflare R2</span>
+              </div>
+            </div></details><div class="tech-pills">
+              <span>Nuxt 3</span>
+              <span>Laravel</span>
+              <span>TiDB Cloud</span>
+              <span>Redis</span>
+              <span>Vercel</span>
+            </div>
+          </div></article>
+<article class="project-card" data-category="tool">
+<div class="project-cover cover-4" aria-hidden="true"><span>AUTOMATION</span><i></i></div>
+<div class="project-body">
+            <div class="card-top">
+              <span class="category-tag">Social Automation</span>
+            </div>
+            <h3>TikTok Auto-Publisher</h3>
+            <p class="project-desc">
+              Hệ thống quản trị nội dung và tự động đăng tải video/hình ảnh lên kênh TikTok doanh nghiệp thông qua TikTok Content Posting API chính thức.
+            </p>
+            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+              <div class="meta-row">
+                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-val">PHP, Laravel, REST API</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Tích hợp API:</span>
+                <span class="meta-val">TikTok Content Posting API, OAuth 2.0</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Platform / Infra:</span>
+                <span class="meta-val">Cloudflare Subdomain &amp; R2 CDN</span>
+              </div>
+            </div></details><div class="tech-pills">
+              <span>Laravel</span>
+              <span>TikTok API</span>
+              <span>OAuth 2.0</span>
+              <span>Automation</span>
+            </div>
+          </div></article>
+<article class="project-card" data-category="ecommerce">
+<div class="project-cover cover-5" aria-hidden="true"><span>SERVICES</span><i></i></div>
+<div class="project-body">
+            <div class="card-top">
+              <span class="category-tag">Service Landing &amp; SEO</span>
+              <a href="https://petscare.page.gd" target="_blank" rel="noopener" class="domain-link">
+                petscare.page.gd ↗
+              </a>
+            </div>
+            <h3>PetCare</h3>
+            <p class="project-desc">
+              Website giới thiệu dịch vụ chăm sóc thú cưng chuẩn SEO, tối ưu tốc độ tải trang, cấu hình Web Manifest và triển khai trên hạ tầng Shared Hosting.
+            </p>
+            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+              <div class="meta-row">
+                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-val">PHP, Laravel, Blade, CSS3</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Tối ưu hóa:</span>
+                <span class="meta-val">Technical SEO, .htaccess Rewrite, PWA Manifest</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Platform / Infra:</span>
+                <span class="meta-val">InfinityFree Hosting, Cloudflare</span>
+              </div>
+            </div></details><div class="tech-pills">
+              <span>Laravel</span>
+              <span>Technical SEO</span>
+              <span>InfinityFree</span>
+              <span>Responsive</span>
+            </div>
+          </div></article>
+<article class="project-card" data-category="tool">
+<div class="project-cover cover-6" aria-hidden="true"><span>EMAIL</span><i></i></div>
+<div class="project-body">
+            <div class="card-top">
+              <span class="category-tag">SaaS / Web Utility</span>
+              <span class="domain-badge">tempmailmmo (Internal / Web)</span>
+            </div>
+            <h3>TempMailMMO</h3>
+            <p class="project-desc">
+              Dịch vụ email tạm thời phục vụ kiểm thử và tự động hóa quy trình tạo tài khoản, kết hợp nhận thư thời gian thực qua cơ chế Catch-All Routing.
+            </p>
+            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+              <div class="meta-row">
+                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-val">Node.js, JavaScript, HTML/CSS</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Mail Infra:</span>
+                <span class="meta-val">Cloudflare Email Routing (Catch-all)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Môi trường:</span>
+                <span class="meta-val">Ubuntu Server, Automated Workers</span>
+              </div>
+            </div></details><div class="tech-pills">
+              <span>Node.js</span>
+              <span>Cloudflare Email</span>
+              <span>Ubuntu</span>
+              <span>Tool Auto</span>
+            </div>
+          </div></article>
+<article class="project-card" data-category="platform">
+<div class="project-cover cover-7" aria-hidden="true"><span>LIVE DATA</span><i></i></div>
+<div class="project-body">
+            <div class="card-top">
+              <span class="category-tag">Sports &amp; Live Data</span>
+              <span class="domain-badge">Web App / Widget</span>
+            </div>
+            <h3>World Cup Live Score</h3>
+            <p class="project-desc">
+              Giao diện theo dõi lịch thi đấu và cập nhật tỷ số trực tiếp giải đấu World Cup, tối ưu hiển thị bảng đấu và trạng thái trận đấu theo thời gian thực.
+            </p>
+            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+              <div class="meta-row">
+                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-val">HTML5, CSS3, Vanilla JavaScript</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Dữ liệu:</span>
+                <span class="meta-val">RESTful Sports API, Local JSON Fallback</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Platform / Infra:</span>
+                <span class="meta-val">Static Edge Hosting (Vercel / Cloudflare)</span>
+              </div>
+            </div></details><div class="tech-pills">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+              <span>Live API</span>
+            </div>
+          </div></article>
+      </div>
+    </section>
+    <section class="experience" id="experience" aria-labelledby="experience-title">
+      <div class="wrap section">
+        <h2 id="experience-title">Kinh nghiệm làm việc</h2>
+        <p class="section-intro">Hơn 9 năm phát triển ứng dụng web với PHP, cùng kinh nghiệm thiết kế kiến trúc, dẫn dắt đội ngũ và xây dựng quy trình CI/CD.</p>
+        <ol class="experience-list">
+          <li>
+            <span class="experience-period">2025–nay</span>
+            <div>
+              <h3>WordPress Developer · GuestWisely</h3>
+              <p>Phát triển website WordPress cho lĩnh vực lưu trú, làm việc với domain và các bản demo website dành cho chỗ ở và điểm đến.</p>
+            </div>
+          </li>
+          <li>
+            <span class="experience-period">2023–2024</span>
+            <div>
+              <h3>Team Leader · Lucius Haus</h3>
+              <p>Thiết kế kiến trúc và dẫn dắt đội phát triển KokoaTV, xây dựng Laravel API và giao diện Nuxt trên nền dữ liệu WordPress.</p>
+            </div>
+          </li>
+          <li>
+            <span class="experience-period">2022–2023</span>
+            <div>
+              <h3>Solution Architect · Mix and Studio</h3>
+              <p>Tối ưu xử lý dữ liệu sản phẩm và thiết lập giám sát cho FROM JAPAN. Giảm chi phí AWS hằng tháng từ 20.000 xuống 10.000 USD.</p>
+            </div>
+          </li>
+          <li>
+            <span class="experience-period">2018–2021</span>
+            <div>
+              <h3>Senior Developer, Team Leader &amp; Solution Architect · FPT Software</h3>
+              <p>Phát triển và tích hợp các mô-đun Magento cho Canon USA, đồng thời hỗ trợ plugin vận chuyển UPS trên nhiều nền tảng thương mại điện tử.</p>
+            </div>
+          </li>
+          <li>
+            <span class="experience-period">2015–2018</span>
+            <div>
+              <h3>Junior đến Senior Developer · Gianty</h3>
+            </div>
+          </li>
+        </ol>
+        <p class="education">Professional Diploma in Software Engineering · NIIT tại Đại học HUTECH, 2015</p>
+      </div>
+    </section>
+    <section class="section stack-section" id="stack" aria-labelledby="stack-title">
+      <div class="wrap">
+        <h2 id="stack-title">Công nghệ &amp; hạ tầng</h2>
+        <p class="section-intro">Các công cụ mình dùng để phát triển, tích hợp và triển khai sản phẩm.</p>
+<div class="stack-grid">
+        <div class="stack-box">
+          <h3>Backend &amp; Languages</h3>
+          <ul>
+            <li>PHP 8.x / Laravel Framework</li>
+            <li>Node.js / JavaScript (ES6+)</li>
+            <li>Symfony / NestJS</li>
+            <li>Magento / Drupal</li>
+            <li>WordPress Custom Schema &amp; Hooks</li>
+            <li>RESTful API &amp; Webhook Integration</li>
+          </ul>
+        </div>
+
+        <div class="stack-box">
+          <h3>Frontend &amp; UI</h3>
+          <ul>
+            <li>Nuxt 3 / Vue.js</li>
+            <li>HTML5 / CSS3 / Tailwind / Blade</li>
+            <li>Responsive &amp; Mobile-First Design</li>
+            <li>Technical SEO &amp; Web Performance</li>
+          </ul>
+        </div>
+
+        <div class="stack-box">
+          <h3>Database &amp; Caching</h3>
+          <ul>
+            <li>MySQL / MariaDB</li>
+            <li>TiDB Cloud (Serverless MySQL)</li>
+            <li>PostgreSQL (Supabase)</li>
+            <li>Redis In-Memory Caching</li>
+          </ul>
+        </div>
+
+        <div class="stack-box">
+          <h3>Cloud, DevOps &amp; Storage</h3>
+          <ul>
+            <li>Cloudflare (DNS, R2 Storage, Email Routing)</li>
+            <li>AWS (EC2, ECS, Lambda, S3, SQS, CloudWatch)</li>
+            <li>Docker, Kubernetes và CI/CD với Jenkins</li>
+            <li>Vercel, Render.com &amp; Railway</li>
+            <li>Linux / Ubuntu Server &amp; .htaccess</li>
+            <li>Git, GitHub, Postman &amp; ngrok</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Liên hệ</p>
+      <h2>Cùng trao đổi về dự án của bạn</h2>
+      <p>Phát triển web full-stack, tích hợp API và tối ưu hệ thống.</p>
+      <div class="actions">
+        <a class="button primary" href="mailto:minhbiken14@gmail.com">Gửi email</a>
+        <a class="button" href="https://github.com/bikencms" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const filters = document.querySelector('.filters');
+    const filterButtons = filters.querySelectorAll('button');
+    const projects = document.querySelectorAll('.project-card');
+    const filterStatus = document.querySelector('#filter-status');
+
+    filters.hidden = false;
+    filters.addEventListener('click', (event) => {
+      const selected = event.target.closest('button[data-filter]');
+      if (!selected) return;
+
+      filterButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(button === selected));
+      });
+
+      let visibleCount = 0;
+      projects.forEach((project) => {
+        project.hidden = selected.dataset.filter !== 'all'
+          && project.dataset.category !== selected.dataset.filter;
+        if (!project.hidden) visibleCount += 1;
+      });
+      filterStatus.textContent = selected.textContent + ' — ' + visibleCount + ' dự án';
+    });
+  </script>
+</body>
+</html>
