@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio và CV của Phạm Công Minh, Senior Developer và Solution Architect tại TP. Hồ Chí Minh.">
-  <meta name="theme-color" content="#12201a">
-  <title>Phạm Công Minh — Senior Developer &amp; Solution Architect</title>
+  <meta name="description" content="Selected web projects, engineering experience, and technical expertise of Minh Pham, a senior developer and solution architect based in Ho Chi Minh City.">
+  <meta name="theme-color" content="#080b18">
+  <title>Design, build, and ship with connected tools</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23090a0f'/%3E%3Cpath d='M13 46V19l19 18 19-18v27' fill='none' stroke='%23a8a0ff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='15' r='4' fill='%23d7fff0'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -19,6 +20,10 @@
       --dark: #12201a;
       --accent: #d1fa88;
       --mono: "IBM Plex Mono", monospace;
+    }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
     *, *::before, *::after { box-sizing: border-box; }
     body { margin: 0; color: var(--ink); background: var(--paper); font: 1rem/1.65 "Be Vietnam Pro", system-ui, sans-serif; }
@@ -119,52 +124,172 @@
       .nav-row, nav { gap: .5rem 1rem; }
       .experience-list li { grid-template-columns: 1fr; }
     }
+    /* A spacious editorial layout with a distinctive cobalt and lavender palette. */
+    :root {
+      --ink: #15172b;
+      --muted: #62677d;
+      --paper: #f7f8fd;
+      --line: #e4e7f1;
+      --dark: #090d1c;
+      --accent: #a7a1ff;
+    }
+    body { background: var(--paper); }
+    :focus-visible { outline-color: #6057db; }
+    .wrap { width: min(100% - 3rem, 78rem); }
+    .site-header { position: relative; z-index: 2; background: #07080c; border-color: #ffffff18; }
+    .nav-row { min-height: 5.25rem; }
+    .brand { font-family: "Be Vietnam Pro", system-ui, sans-serif; font-weight: 800; letter-spacing: -.065em; }
+    .brand span { color: #aaa6ff; }
+    nav { gap: 1.6rem; }
+    nav a { color: #c2c5d6; transition: color .2s ease; }
+    nav a:hover { color: white; }
+    .hero { position: relative; isolation: isolate; overflow: hidden; background: #07080c; }
+    .hero::before { content: none; }
+    .hero-grid { grid-template-columns: 1fr; justify-items: center; gap: 3.6rem; padding-block: clamp(5.5rem, 11vw, 9rem) 6rem; text-align: center; }
+    .hero-grid > div { display: grid; justify-items: center; }
+    .eyebrow { color: #b9b5ff; font-family: "Be Vietnam Pro", system-ui, sans-serif; font-size: .84rem; font-weight: 700; letter-spacing: .08em; }
+    .hero h1 { max-width: 64rem; margin: 1.35rem 0; font-size: clamp(3.7rem, 10vw, 8.5rem); letter-spacing: -.085em; line-height: 1.04; background: linear-gradient(105deg, #fff 25%, #d8d5ff 60%, #8fbeff); color: transparent; background-clip: text; }
+    .intro { max-width: 46rem; color: #b8bdd2; font-size: clamp(1.05rem, 2vw, 1.22rem); line-height: 1.8; }
+    .actions { justify-content: center; }
+    .button { border-radius: .75rem; border-color: #777c9a; padding-inline: 1.35rem; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .button:hover { transform: translateY(-2px); border-color: #b7b2ff; color: white; }
+    .button.primary { background: #f3f2ff; color: #15142b; border-color: #f3f2ff; box-shadow: 0 .5rem 2rem #8f85ff44; }
+    .button.primary:hover { background: #dcd8ff; color: #15142b; }
+    .system { width: min(100%, 54rem); min-height: 0; padding: 1.6rem 2rem; border-radius: 1.25rem; text-align: left; background: linear-gradient(125deg, #202544ee, #13182fee); border-color: #ffffff2b; box-shadow: 0 2rem 5rem #0007; }
+    .system::before { width: 15rem; height: 15rem; top: -10rem; right: -4rem; border-color: #a7a1ff77; box-shadow: 0 0 0 1.4rem #a7a1ff14, 0 0 0 2.8rem #a7a1ff0b; }
+    .system dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.5rem; margin-top: 1rem; }
+    .system dl div { grid-template-columns: 1fr; gap: .2rem; border-color: #ffffff2b; }
+    .system dt { color: #aeb4cf; }
+    .system dd { color: #f4f5ff; }
+    .section { padding-block: clamp(5rem, 8vw, 8rem); }
+    .section-kicker { color: #625ae2; font-family: "Be Vietnam Pro", system-ui, sans-serif; font-weight: 700; }
+    h2 { font-size: clamp(2.5rem, 5vw, 4.6rem); letter-spacing: -.075em; }
+    .section-intro { max-width: 46rem; font-size: 1.05rem; }
+    .filters { margin-block: 2.2rem 1.6rem; }
+    .filters button { border-color: #e0e3ee; box-shadow: 0 2px 8px #171d4810; }
+    .filters button:hover { border-color: #8c83e9; }
+    .filters button[aria-pressed="true"] { background: #34307e; border-color: #34307e; }
+    .projects-grid { gap: 1.35rem; }
+    .project-card { border-radius: 1.3rem; box-shadow: 0 1rem 3rem #1b25500b; transition: transform .25s ease, box-shadow .25s ease; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 1.3rem 3rem #1b25501c; }
+    .project-cover { min-height: clamp(9rem, 18vw, 14rem); padding: 1.6rem; background: radial-gradient(circle at 85% 15%, #ffffff35, transparent 35%), var(--cover-bg, #284339); }
+    .project-cover span { font-family: "Be Vietnam Pro", system-ui, sans-serif; font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -.07em; }
+    .project-body { padding: clamp(1.3rem, 2.7vw, 2rem); gap: 1rem; }
+    .category-tag { color: #656981; }
+    .domain-link { color: #4d46be; }
+    .tech-pills span { background: #f0f0fc; color: #4b469b; }
+    .stack-section { background: #edeffc; }
+    .stack-box { background: #fff; border-radius: 1.1rem; padding: 1.8rem; }
+    .experience-period { color: #655bd4; }
+    .footer { background: #0b0e20; }
+    @media (max-width: 43rem) {
+      .wrap { width: calc(100% - 2rem); }
+      .nav-row { align-items: start; }
+      nav { gap: .5rem .9rem; }
+      nav a { font-size: .83rem; }
+      .hero-grid { gap: 2.5rem; }
+      .system { padding: 1.25rem; }
+      .system dl { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .button, nav a, .project-card { transition: none; }
+      .button:hover, .project-card:hover { transform: none; }
+    }
+    .site-header .nav-row { justify-content: flex-start; }
+    .hero-grid { justify-items: start; gap: 3rem; padding-block: clamp(3.5rem, 7vw, 6rem) clamp(4rem, 8vw, 6rem); text-align: left; }
+    .hero-grid > div { justify-items: start; }
+    .hero .actions { justify-content: flex-start; }
+    .hero-copy { max-width: 72rem; }
+    .hero .eyebrow { display: inline-flex; align-items: center; min-height: 2.4rem; padding: .35rem .9rem; border: 1px solid #aaa6ff55; border-radius: 99rem; background: #a7a1ff12; }
+    .hero h1 { max-width: 66rem; margin: 1rem 0; font-size: clamp(1.9rem, 3.7vw, 3.2rem); line-height: 1.14; color: #fff; background: none; letter-spacing: -.055em; }
+    .hero .intro { max-width: 64rem; font-size: 1rem; line-height: 1.55; color: #adb0bd; }
+    .hero-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 12rem; gap: 0; width: 100%; border: 1px solid #272934; border-radius: 1.1rem; overflow: hidden; }
+    .flow-card { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: .25rem; width: 100%; min-width: 0; height: 100%; padding: 1.5rem; border: 0; border-right: 1px solid #272934; background: #090a0f; text-align: left; }
+    .flow-card:nth-child(4n) { border-right: 0; }
+    .flow-card:nth-child(-n+4) { border-bottom: 1px solid #272934; }
+    .flow-card strong { color: #acaeba; font-size: .9rem; font-weight: 500; }
+    .flow-card .flow-icon { display: grid; flex: 0 0 auto; place-items: center; width: 3rem; height: 3rem; margin-bottom: auto; border-radius: .75rem; background: #fff; }
+    .flow-card .flow-icon img { display: block; width: 2rem; height: 2rem; }
+    .flow-card .flow-icon svg { display: block; width: 2.2rem; height: 2.2rem; }
+    .flow-card a { color: #f5f5f8; font-size: .95rem; font-weight: 600; text-decoration: none; }
+    .flow-card a::after { content: " →"; }
+    .flow-card a:hover { text-decoration: underline; }
+    .flow-card:nth-child(1) .flow-icon { background: #ffe9df; }
+    .flow-card:nth-child(2) .flow-icon { background: #fff0e8; }
+    .flow-card:nth-child(3) .flow-icon { background: #d9f4e9; }
+    .flow-card:nth-child(4) .flow-icon { background: #e8e3ff; }
+    .flow-card:nth-child(5) .flow-icon { background: #fff2dd; }
+    .flow-card:nth-child(6) .flow-icon { background: #fff0dc; }
+    .flow-card:nth-child(7) .flow-icon { background: #e9e9ff; }
+    .flow-card:nth-child(8) .flow-icon { background: #d9fbef; }
+    .infra-line { color: #aeb4cf; font-size: .92rem; }
+    .infra-line a { color: #f5f5f8; text-underline-offset: .2em; }
+    @media (max-width: 55rem) {
+      .hero-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 10rem; }
+      .flow-card:nth-child(2n) { border-right: 0; }
+      .flow-card:nth-child(-n+6) { border-bottom: 1px solid #272934; }
+    }
+    @media (max-width: 43rem) {
+      .hero-grid { gap: 3rem; }
+      .flow-card { padding: 1rem; }
+      .flow-card strong { font-size: .95rem; }
+    }
+    /* Consistent dark surfaces across the full portfolio. */
+    :root { color-scheme: dark; --ink: #f4f5f8; --muted: #a9adbb; --paper: #07080c; --line: #292c35; }
+    body, .experience, .stack-section { color: var(--ink); background: #07080c; }
+    .project-card { color: var(--ink); background: transparent; border-color: #363943; box-shadow: none; transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+    .project-card:hover, .project-card:focus-within { border-color: #aaa3ff; box-shadow: 0 0 0 1px #aaa3ff55, 0 0 2rem #8177ff3b; }
+    .project-card .project-cover { background: transparent; border-bottom: 1px solid var(--line); }
+    .project-card .project-cover::before { display: none; }
+    .stack-box { color: var(--ink); background: #101116; border-color: var(--line); box-shadow: none; }
+    .filters button { color: #d8dae4; background: #14161d; border-color: #30333e; box-shadow: none; }
+    .filters button[aria-pressed="true"] { color: #fff; background: #4941a8; border-color: #4941a8; }
+    .category-tag, .domain-badge, .section-intro, .project-desc, .stack-box ul, .experience-list p, .education { color: var(--muted); }
+    .section-kicker, .experience-period { color: #b5aeff; }
+    .domain-link, .project-body a { color: #b9b3ff; }
+    .tech-pills span { color: #d8d3ff; background: #26233c; }
+    .footer { background: #07080c; border-top: 1px solid var(--line); }
+    .footer p:not(.eyebrow) { color: var(--muted); }
+    .skip { color: #101116; }
+    details { border-color: var(--line); }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Đến nội dung chính</a>
+  <a class="skip" href="#main">Skip to main content</a>
   <header class="site-header">
     <div class="wrap nav-row">
-      <a class="brand" href="#top" aria-label="minhbiken.dev, đầu trang">minhbiken<span>.dev</span></a>
-      <nav aria-label="Điều hướng chính">
-        <a href="#projects">Dự án</a>
-        <a href="#experience">Kinh nghiệm</a>
-        <a href="#stack">Công nghệ</a>
-        <a href="#contact">Liên hệ</a>
-      </nav>
+      <a class="brand" href="#top" aria-label="minhbiken.dev, back to top">minhbiken<span>.dev</span></a>
     </div>
   </header>
   <main id="main">
     <section class="hero" id="top" aria-labelledby="intro-title">
       <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow">Senior Developer · Solution Architect</p>
-          <h1 id="intro-title">Phạm Công Minh</h1>
-          <p class="intro">Mình là minhbiken, lập trình viên tại TP. Hồ Chí Minh. Mình thiết kế kiến trúc, dẫn dắt đội phát triển và xây dựng các hệ thống web với PHP, Node.js và AWS.</p>
-          <div class="actions">
-            <a class="button primary" href="#projects">Xem dự án</a>
-          </div>
+        <div class="hero-copy">
+          <h1 id="intro-title">Design, build, and ship<br>with connected tools</h1>
+          <p class="intro">I design in Framer and work with Claude, ChatGPT, and Codex to develop websites. GitHub keeps the code organized, while Vercel handles deployment across a broader cloud stack.</p>
         </div>
-        <aside class="system" aria-label="Công nghệ chính">
-          <p class="eyebrow">Công nghệ chính</p>
-          <dl>
-            <div><dt>Frontend</dt><dd>Nuxt 3 · Vue.js · Blade</dd></div>
-            <div><dt>Backend</dt><dd>Laravel · Node.js</dd></div>
-            <div><dt>Dữ liệu</dt><dd>MySQL · TiDB · Redis</dd></div>
-            <div><dt>Cloud</dt><dd>AWS · Cloudflare · Vercel · Render</dd></div>
-          </dl>
-        </aside>
+        <div class="hero-flow" aria-label="Tools in my workflow">
+          <div class="flow-card"><span class="flow-icon"><img src="https://cdn.simpleicons.org/claude/D97757" alt="" loading="lazy"></span><strong>Claude</strong><a href="https://claude.ai/directory/connectors/framer" target="_blank" rel="noopener noreferrer">Add to Claude</a></div>
+          <div class="flow-card"><span class="flow-icon"><img src="https://cdn.simpleicons.org/claude/C66E4E" alt="" loading="lazy"></span><strong>Claude Code</strong><a href="https://claude.ai/directory/connectors/framer" target="_blank" rel="noopener noreferrer">Add to Claude Code</a></div>
+          <div class="flow-card"><span class="flow-icon"><img src="https://framerusercontent.com/images/ruv2NHckqpQOHTuPoDo0yy9X1g.png?scale-down-to=1024&amp;width=1648&amp;height=1652" alt="" loading="lazy"></span><strong>ChatGPT</strong><a href="https://chatgpt.com/plugins/plugin_asdk_app_6ac3c5787b388191a9fad3e356d1bd3f" target="_blank" rel="noopener noreferrer">Add to ChatGPT</a></div>
+          <div class="flow-card"><span class="flow-icon"><img src="https://framerusercontent.com/images/Q2PwvcvPzxBf7y810ewVueDlxss.png?width=512&amp;height=512" alt="" loading="lazy"></span><strong>Codex</strong><a href="https://chatgpt.com/plugins/plugin_asdk_app_6ac3c5787b388191a9fad3e356d1bd3f" target="_blank" rel="noopener noreferrer">Add to Codex</a></div>
+          <div class="flow-card"><span class="flow-icon"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><text x="24" y="26" fill="#232f3e" font-family="Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="-1.5" text-anchor="middle">aws</text><path d="M10 32c9 5 20 5 29-1" fill="none" stroke="#ff9900" stroke-linecap="round" stroke-width="3"/><path d="m34 29 5 2-2 5" fill="none" stroke="#ff9900" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span><strong>AWS</strong><a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">Explore AWS</a></div>
+          <div class="flow-card"><span class="flow-icon"><img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="" loading="lazy"></span><strong>Cloudflare</strong><a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">Explore Cloudflare</a></div>
+          <div class="flow-card"><span class="flow-icon"><img src="https://cdn.simpleicons.org/vercel/6858D9" alt="" loading="lazy"></span><strong>Vercel</strong><a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Explore Vercel</a></div>
+          <div class="flow-card"><span class="flow-icon"><img src="https://cdn.simpleicons.org/render/00A67D" alt="" loading="lazy"></span><strong>Render</strong><a href="https://render.com/" target="_blank" rel="noopener noreferrer">Explore Render</a></div>
+        </div>
+        <p class="infra-line">Using an app that’s not listed? <a href="#">Follow the manual setup guide</a> and use this server URL: <a href="https://portfolio.ibear.vn/" target="_blank" rel="noopener noreferrer">https://portfolio.ibear.vn/</a></p>
       </div>
     </section>
     <section class="wrap section" id="projects" aria-labelledby="projects-title">
-      <p class="section-kicker">Portfolio</p>
-      <h2 id="projects-title">Dự án nổi bật</h2>
-      <p class="section-intro">Khám phá sản phẩm, tính năng và kiến trúc của từng dự án, cùng các website WordPress cho lĩnh vực lưu trú.</p>
-      <div class="filters" role="group" aria-label="Lọc dự án" hidden>
-        <button type="button" data-filter="all" aria-pressed="true">Tất cả</button>
-        <button type="button" data-filter="ecommerce" aria-pressed="false">Thương mại &amp; dịch vụ</button>
-        <button type="button" data-filter="platform" aria-pressed="false">Nền tảng web</button>
-        <button type="button" data-filter="tool" aria-pressed="false">Tự động hóa</button>
+      <p class="section-kicker">Selected Work</p>
+      <h2 id="projects-title">Featured Projects</h2>
+      <p class="section-intro">Explore the products I have built, the challenges they solve, and the technology behind them, including WordPress experiences for the hospitality industry.</p>
+      <div class="filters" role="group" aria-label="Filter projects" hidden>
+        <button type="button" data-filter="all" aria-pressed="true">All projects</button>
+        <button type="button" data-filter="ecommerce" aria-pressed="false">Commerce &amp; services</button>
+        <button type="button" data-filter="platform" aria-pressed="false">Web platforms</button>
+        <button type="button" data-filter="tool" aria-pressed="false">Automation</button>
       </div>
       <p class="sr-only" role="status" id="filter-status"></p>
       <div class="projects-grid">
@@ -173,17 +298,17 @@
           <div class="project-body">
             <div class="card-top">
               <span class="category-tag">WordPress · Vacation rental</span>
-              <span class="domain-badge">Website &amp; demo</span>
+              <span class="domain-badge">Websites</span>
             </div>
-            <h3>GuestWisely — Website lưu trú</h3>
-            <p class="project-desc">Website WordPress cho lĩnh vực cho thuê lưu trú, giới thiệu chỗ ở và điểm đến trên các domain riêng.</p>
+            <h3>GuestWisely — Hospitality Websites</h3>
+            <p class="project-desc">WordPress websites for vacation rentals, showcasing properties and destinations across dedicated domains.</p>
             <div class="tech-pills"><span>WordPress</span><span>Hospitality</span><span>Domain</span></div>
             <details>
-              <summary>Xem website</summary>
+              <summary>View websites</summary>
               <ul>
                 <li><a href="https://caribbeanparadisehomes.com/" target="_blank" rel="noopener noreferrer">Caribbean Paradise Homes</a></li>
-                <li><a href="https://demo.aurora.guestwisely.io/" target="_blank" rel="noopener noreferrer">Aurora</a></li>
-                <li><a href="https://demo.laguna.guestwisely.io/" target="_blank" rel="noopener noreferrer">Laguna</a></li>
+                <li><a href="https://lazudiholidayrentals.com/en/" target="_blank" rel="noopener noreferrer">Lazudi Holiday Rentals</a></li>
+                <li><a href="https://sunstays.rentals/" target="_blank" rel="noopener noreferrer">Sunstays Rentals</a></li>
                 <li><a href="https://almarinavillas.com/" target="_blank" rel="noopener noreferrer">Almarina Villas</a></li>
               </ul>
             </details>
@@ -200,11 +325,11 @@
             </div>
             <h3>iBear Vietnam</h3>
             <p class="project-desc">
-              Website thương mại điện tử và giới thiệu thương hiệu máy gắp thú Pick Crush, trà sữa và mô hình Blind-box. Giao diện tối ưu trải nghiệm mobile theo phong cách Instagram Shop.
+              An e-commerce storefront for Pick Crush claw machines, milk tea, and blind-box products, designed around a mobile shopping experience.
             </p>
-            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+            <details><summary>Technical details</summary><div class="meta-table">
               <div class="meta-row">
-                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-label">Languages / framework:</span>
                 <span class="meta-val">PHP, Laravel, Blade, HTML/CSS/JS</span>
               </div>
               <div class="meta-row">
@@ -231,11 +356,11 @@
                 axn.ibear.vn ↗
               </a>
             </div>
-            <h3>MovieAXN / KokoaTV</h3>
+            <h3>MovieAXN</h3>
             <p class="project-desc">
-              Nền tảng xem phim trực tuyến kiến trúc tách rời Frontend/Backend (Headless), tích hợp caching tốc độ cao và lưu trữ media phân tán.
+              A streaming platform with a headless frontend and backend architecture, fast caching, and distributed media storage.
             </p>
-            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+            <details><summary>Technical details</summary><div class="meta-table">
               <div class="meta-row">
                 <span class="meta-label">Frontend:</span>
                 <span class="meta-val">Nuxt 3 (Vue.js), Node.js</span>
@@ -264,15 +389,15 @@
             </div>
             <h3>TikTok Auto-Publisher</h3>
             <p class="project-desc">
-              Hệ thống quản trị nội dung và tự động đăng tải video/hình ảnh lên kênh TikTok doanh nghiệp thông qua TikTok Content Posting API chính thức.
+              A content management dashboard that schedules and publishes videos and images to a business TikTok account through the official Content Posting API.
             </p>
-            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+            <details><summary>Technical details</summary><div class="meta-table">
               <div class="meta-row">
-                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-label">Languages / framework:</span>
                 <span class="meta-val">PHP, Laravel, REST API</span>
               </div>
               <div class="meta-row">
-                <span class="meta-label">Tích hợp API:</span>
+                <span class="meta-label">API integration:</span>
                 <span class="meta-val">TikTok Content Posting API, OAuth 2.0</span>
               </div>
               <div class="meta-row">
@@ -297,15 +422,15 @@
             </div>
             <h3>PetCare</h3>
             <p class="project-desc">
-              Website giới thiệu dịch vụ chăm sóc thú cưng chuẩn SEO, tối ưu tốc độ tải trang, cấu hình Web Manifest và triển khai trên hạ tầng Shared Hosting.
+              A pet-care service website built for search visibility and fast loading, with a web manifest and shared-hosting deployment.
             </p>
-            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+            <details><summary>Technical details</summary><div class="meta-table">
               <div class="meta-row">
-                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-label">Languages / framework:</span>
                 <span class="meta-val">PHP, Laravel, Blade, CSS3</span>
               </div>
               <div class="meta-row">
-                <span class="meta-label">Tối ưu hóa:</span>
+                <span class="meta-label">Optimization:</span>
                 <span class="meta-val">Technical SEO, .htaccess Rewrite, PWA Manifest</span>
               </div>
               <div class="meta-row">
@@ -328,11 +453,11 @@
             </div>
             <h3>TempMailMMO</h3>
             <p class="project-desc">
-              Dịch vụ email tạm thời phục vụ kiểm thử và tự động hóa quy trình tạo tài khoản, kết hợp nhận thư thời gian thực qua cơ chế Catch-All Routing.
+              A temporary email utility for testing and account workflows, with real-time message delivery through catch-all routing.
             </p>
-            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+            <details><summary>Technical details</summary><div class="meta-table">
               <div class="meta-row">
-                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-label">Languages / framework:</span>
                 <span class="meta-val">Node.js, JavaScript, HTML/CSS</span>
               </div>
               <div class="meta-row">
@@ -340,7 +465,7 @@
                 <span class="meta-val">Cloudflare Email Routing (Catch-all)</span>
               </div>
               <div class="meta-row">
-                <span class="meta-label">Môi trường:</span>
+                <span class="meta-label">Environment:</span>
                 <span class="meta-val">Ubuntu Server, Automated Workers</span>
               </div>
             </div></details><div class="tech-pills">
@@ -359,15 +484,15 @@
             </div>
             <h3>World Cup Live Score</h3>
             <p class="project-desc">
-              Giao diện theo dõi lịch thi đấu và cập nhật tỷ số trực tiếp giải đấu World Cup, tối ưu hiển thị bảng đấu và trạng thái trận đấu theo thời gian thực.
+              A World Cup schedule and live-score interface with clear group standings and real-time match status.
             </p>
-            <details><summary>Chi tiết kỹ thuật</summary><div class="meta-table">
+            <details><summary>Technical details</summary><div class="meta-table">
               <div class="meta-row">
-                <span class="meta-label">Ngôn ngữ / FW:</span>
+                <span class="meta-label">Languages / framework:</span>
                 <span class="meta-val">HTML5, CSS3, Vanilla JavaScript</span>
               </div>
               <div class="meta-row">
-                <span class="meta-label">Dữ liệu:</span>
+                <span class="meta-label">Data:</span>
                 <span class="meta-val">RESTful Sports API, Local JSON Fallback</span>
               </div>
               <div class="meta-row">
@@ -385,51 +510,51 @@
     </section>
     <section class="experience" id="experience" aria-labelledby="experience-title">
       <div class="wrap section">
-        <h2 id="experience-title">Kinh nghiệm làm việc</h2>
-        <p class="section-intro">Hơn 9 năm phát triển ứng dụng web với PHP, cùng kinh nghiệm thiết kế kiến trúc, dẫn dắt đội ngũ và xây dựng quy trình CI/CD.</p>
+        <h2 id="experience-title">Professional Experience</h2>
+        <p class="section-intro">Over nine years of PHP web development, with experience in solution architecture, team leadership, and CI/CD delivery.</p>
         <ol class="experience-list">
           <li>
-            <span class="experience-period">2025–nay</span>
+            <span class="experience-period">2025–Present</span>
             <div>
               <h3>WordPress Developer · GuestWisely</h3>
-              <p>Phát triển website WordPress cho lĩnh vực lưu trú, làm việc với domain và các bản demo website dành cho chỗ ở và điểm đến.</p>
+              <p>Develop WordPress websites for the hospitality sector, including property and destination sites across dedicated domains.</p>
             </div>
           </li>
           <li>
             <span class="experience-period">2023–2024</span>
             <div>
               <h3>Team Leader · Lucius Haus</h3>
-              <p>Thiết kế kiến trúc và dẫn dắt đội phát triển KokoaTV, xây dựng Laravel API và giao diện Nuxt trên nền dữ liệu WordPress.</p>
+              <p>Architected KokoaTV and led its development team, building a Laravel API and Nuxt frontend on an existing WordPress data platform.</p>
             </div>
           </li>
           <li>
             <span class="experience-period">2022–2023</span>
             <div>
               <h3>Solution Architect · Mix and Studio</h3>
-              <p>Tối ưu xử lý dữ liệu sản phẩm và thiết lập giám sát cho FROM JAPAN. Giảm chi phí AWS hằng tháng từ 20.000 xuống 10.000 USD.</p>
+              <p>Improved product-data processing and service monitoring for FROM JAPAN, reducing monthly AWS costs from USD 20,000 to USD 10,000.</p>
             </div>
           </li>
           <li>
             <span class="experience-period">2018–2021</span>
             <div>
               <h3>Senior Developer, Team Leader &amp; Solution Architect · FPT Software</h3>
-              <p>Phát triển và tích hợp các mô-đun Magento cho Canon USA, đồng thời hỗ trợ plugin vận chuyển UPS trên nhiều nền tảng thương mại điện tử.</p>
+              <p>Built and integrated Magento modules for Canon USA and supported UPS shipping plugins across multiple e-commerce platforms.</p>
             </div>
           </li>
           <li>
             <span class="experience-period">2015–2018</span>
             <div>
-              <h3>Junior đến Senior Developer · Gianty</h3>
+              <h3>Junior to Senior Developer · Gianty</h3>
             </div>
           </li>
         </ol>
-        <p class="education">Professional Diploma in Software Engineering · NIIT tại Đại học HUTECH, 2015</p>
+        <p class="education">Professional Diploma in Software Engineering · NIIT at HUTECH University, 2015</p>
       </div>
     </section>
     <section class="section stack-section" id="stack" aria-labelledby="stack-title">
       <div class="wrap">
-        <h2 id="stack-title">Công nghệ &amp; hạ tầng</h2>
-        <p class="section-intro">Các công cụ mình dùng để phát triển, tích hợp và triển khai sản phẩm.</p>
+        <h2 id="stack-title">Technology &amp; Infrastructure</h2>
+        <p class="section-intro">The tools and platforms I use to build, integrate, and deploy digital products.</p>
 <div class="stack-grid">
         <div class="stack-box">
           <h3>Backend &amp; Languages</h3>
@@ -468,7 +593,7 @@
           <ul>
             <li>Cloudflare (DNS, R2 Storage, Email Routing)</li>
             <li>AWS (EC2, ECS, Lambda, S3, SQS, CloudWatch)</li>
-            <li>Docker, Kubernetes và CI/CD với Jenkins</li>
+            <li>Docker, Kubernetes &amp; Jenkins CI/CD</li>
             <li>Vercel, Render.com &amp; Railway</li>
             <li>Linux / Ubuntu Server &amp; .htaccess</li>
             <li>Git, GitHub, Postman &amp; ngrok</li>
@@ -480,11 +605,11 @@
   </main>
   <footer class="footer" id="contact">
     <div class="wrap">
-      <p class="eyebrow">Liên hệ</p>
-      <h2>Cùng trao đổi về dự án của bạn</h2>
-      <p>Phát triển web full-stack, tích hợp API và tối ưu hệ thống.</p>
+      <p class="eyebrow">Contact</p>
+      <h2>Let’s discuss your next project</h2>
+      <p>Full-stack web development, API integration, and system optimization.</p>
       <div class="actions">
-        <a class="button primary" href="mailto:minhbiken14@gmail.com">Gửi email</a>
+        <a class="button primary" href="mailto:minhbiken14@gmail.com">Send an email</a>
         <a class="button" href="https://github.com/bikencms" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
@@ -510,7 +635,7 @@
           && project.dataset.category !== selected.dataset.filter;
         if (!project.hidden) visibleCount += 1;
       });
-      filterStatus.textContent = selected.textContent + ' — ' + visibleCount + ' dự án';
+      filterStatus.textContent = selected.textContent + ' — ' + visibleCount + (visibleCount === 1 ? ' project' : ' projects');
     });
   </script>
 </body>
